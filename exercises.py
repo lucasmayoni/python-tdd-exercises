@@ -1,9 +1,9 @@
-
-def reverse_list(l):
+def reverse_list(items_list):
     """
     Reverses order of elements in list l.
     """
-    return None
+    new_list = items_list[::-1]
+    return new_list
 
 
 def test_reverse_list():
@@ -16,7 +16,7 @@ def reverse_string(s):
     """
     Reverses order of characters in string s.
     """
-    return None
+    return s[::-1]
 
 
 def test_reverse_string():
@@ -30,7 +30,8 @@ def is_english_vowel(c):
     Returns True if c is an english vowel
     and False otherwise.
     """
-    return None
+
+    return c in ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U', 'Y', 'y')
 
 
 def test_is_english_vowel():
@@ -57,7 +58,12 @@ def count_num_vowels(s):
     """
     Returns the number of vowels in a string s.
     """
-    return None
+    number_of_vowels = 0
+    list_of_letters = list(s)
+    for letter in list_of_letters:
+        if is_english_vowel(letter):
+            number_of_vowels += 1
+    return number_of_vowels
 
 
 def test_count_num_vowels():
@@ -79,7 +85,16 @@ def histogram(l):
     """
     Converts a list of integers into a simple string histogram.
     """
-    return None
+    result = ""
+    items = len(l)
+    for digit in l:
+        items -=1
+        while digit > 0:
+            result += '#'
+            digit -= 1
+        if items >= 1:
+            result += "\n"
+    return result
 
 
 def test_histogram():
@@ -281,7 +296,6 @@ def read_column(file_name, column_number):
 
 
 def test_read_column():
-
     import tempfile
     import os
 
@@ -319,7 +333,6 @@ def character_statistics(file_name):
 
 
 def test_character_statistics():
-
     import tempfile
     import os
 
@@ -385,7 +398,7 @@ def pythagorean_triples(n):
     for c in range(1, n + 1):
         for b in range(1, c):
             for a in range(1, b):
-                if a*a + b*b == c*c:
+                if a * a + b * b == c * c:
                     l.append((a, b, c))
     return l
 
