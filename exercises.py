@@ -108,12 +108,19 @@ def get_word_lengths(s):
     Returns a list of integers representing
     the word lengths in string s.
     """
-    return None
+    list_of_integers = []
+    for word in s.split(" "):
+        list_of_integers.append(len(word))
+    return list_of_integers
 
 
 def test_get_word_lengths():
     text = "Three tomatoes are walking down the street"
+    text_2 = "Pacoca mamani argentina"
+    empty_text = ""
     assert get_word_lengths(text) == [5, 8, 3, 7, 4, 3, 6]
+    assert get_word_lengths(text_2) == [6, 6, 9]
+    assert get_word_lengths(empty_text) == [0]
 
 
 # ------------------------------------------------------------------------------
