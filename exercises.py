@@ -154,11 +154,14 @@ def test_find_longest_word():
 # ------------------------------------------------------------------------------
 
 def validate_dna(s):
+    import re
     """
     Return True if the DNA string only contains characters
     a, c, t, or g (lower or uppercase). False otherwise.
     """
-    return None
+    lower_string = s.lower()
+    new_string = re.findall("[^actg]", lower_string)
+    return False if new_string else True
 
 
 def test_validate_dna():
@@ -175,7 +178,14 @@ def base_pair(c):
     of the base pair. If the base is not recognized,
     return 'unknown'.
     """
-    return None
+    lower_letter = c.lower()
+    map_dict = {
+        'a': 't',
+        'c': 'g',
+        't': 'a',
+        'g': 'c'
+    }
+    return map_dict[lower_letter] if lower_letter in map_dict.keys() else 'unknown'
 
 
 def test_base_pair():
