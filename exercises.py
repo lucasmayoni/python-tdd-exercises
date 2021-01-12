@@ -130,7 +130,14 @@ def find_longest_word(s):
     Returns the longest word in string s.
     In case there are several, return the first.
     """
-    return None
+    word_list = s.split()
+    return_word = ""
+    max_word = 0
+    for word in word_list:
+        if len(word) > max_word:
+            max_word = len(word)
+            return_word = word
+    return return_word
 
 
 def test_find_longest_word():
@@ -138,6 +145,10 @@ def test_find_longest_word():
     assert find_longest_word(text) == "tomatoes"
     text = "foo foo1 foo2 foo3"
     assert find_longest_word(text) == "foo1"
+    text = "hola"
+    assert find_longest_word(text) == "hola"
+    text = ""
+    assert find_longest_word(text) == ""
 
 
 # ------------------------------------------------------------------------------
